@@ -84,3 +84,28 @@ https://potato-yong.tistory.com/150
 ```
 --cri-socket /var/run/crio/crio.sock 
 ```
+
+* k8s 초기화 및 cni 삭제
+```
+kubeadm reset
+```
+```
+systemctl stop kubelet
+systemctl stop crio
+ip link delete cni0
+rm -rf /var/lib/cni/
+rm -rf /var/lib/kubelet/*
+rm -rf /var/lib/etcd/
+rm -rf /etc/cni/
+rm -rf /etc/kubernetes
+rm -rf ~/.kube
+```
+* crio, kubelet 재기동
+```
+systemctl start crio
+systemctl start kubelet
+```
+
+
+
+
