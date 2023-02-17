@@ -106,6 +106,9 @@ systemctl start crio
 systemctl start kubelet
 ```
 
-
+* pod 강제 삭제
+```
+kubectl -n <namespace> delete pods --grace-period=0 --force <pod_name>
+```
 
 
